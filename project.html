@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'KoPub Dotum';src:url(fonts/KoPubDotum-Light.woff2) format('woff2');font-weight:300 400;font-display:swap}
+@font-face{font-family:'KoPub Dotum';src:url(fonts/KoPubDotum-Medium.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'KoPub Dotum';src:url(fonts/KoPubDotum-Bold.woff2) format('woff2');font-weight:600 800;font-display:swap}
+:root{
+  --bg:#f6f5f2; --ink:#111; --mute:#8a8984; --line:#111;
+  --accent:#ff5a1f; --glass:rgba(255,255,255,.42);
+  --ease:cubic-bezier(.22,.8,.16,1);
+  --ui:'Inter Tight','KoPub Dotum',system-ui,sans-serif;
+  --serif:var(--ui);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font:400 11px/1.4 var(--ui);-webkit-font-smoothing:antialiased;transition:background .8s var(--ease),color .6s}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.up{text-transform:uppercase;letter-spacing:.06em}
+.hov{position:relative}
+.hov::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .35s var(--ease)}
+.hov:hover::after,.hov.on::after{right:0}
+
+.cover{height:100%;aspect-ratio:4/5;position:relative;overflow:hidden;background:#fbfaf7;border:1px solid #111;display:flex;flex-direction:column;justify-content:space-between;padding:22px;color:#111}
+.cover::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;right:-20%;top:20%;background:var(--c);filter:blur(34px);opacity:.85}
+.cover>*{position:relative}
+.cover .k{display:flex;justify-content:space-between;gap:10px}
+.cover h3{font:500 clamp(24px,3.2vh,38px)/1.1 var(--ui);letter-spacing:-.02em}
+.cover h3 i{font-style:normal;font-weight:400;opacity:.55;font-size:.5em}
+.cover .n{font:500 clamp(60px,12vh,130px)/.8 var(--ui);letter-spacing:-.05em}
+.row{border-bottom:1px solid var(--line);display:flex;min-height:30px;align-items:stretch}
+.row:last-child{border-bottom:0}
+.row>*{padding:8px 10px;display:flex;align-items:center}
+.row .grow{flex:1}
+.row .split{flex:1;border-right:1px solid var(--line)}
+.row .split:last-child{border-right:0}
+.cell-k{display:block;color:var(--mute);font-size:9.5px;margin-bottom:3px}
+html,body{height:auto;min-height:100%;overflow:visible}
+body{background:#ebebe9}
+main{min-height:100vh;background:rgba(250,250,248,.78)}
+.project-info{display:grid;grid-template-columns:2fr 1fr .7fr 2.3fr;border-bottom:1px solid var(--line)}
+.project-info>*{min-width:0;padding:10px;overflow-wrap:anywhere}
+.project-info>*+*{border-left:1px solid var(--line)}
+#v-title{font:500 18px/1.2 var(--ui)}
+#v-title small{display:block;font:400 13px/1.3 var(--ui);color:var(--mute);margin-top:3px}
+#v-desc{font-size:11.5px;line-height:1.55;word-break:keep-all}
+.v-img > * + *{margin-top:10px}
+.v-img img,.v-img video{display:block;width:100%;height:auto}
+.v-img .cover{width:100%;height:auto}
+@media(max-width:700px){
+  .project-info{grid-template-columns:1fr 1fr}
+  #v-title,#v-desc{grid-column:1/-1}
+  #v-title{border-bottom:1px solid var(--line)}
+  #v-title+div,#v-desc{border-left:0}
+  #v-desc{border-top:1px solid var(--line)}
+  #v-desc:empty{display:none}
+}
+</style></head>
+<body data-project-page><main>
+<nav aria-label="Project navigation" class="row up"><span id="v-head" class="grow"></span><a id="v-prev">‹ Prev</a><a id="v-next">Next ›</a><a href="index.html#design">Back to Work</a></nav>
+  <section class="project-info" aria-labelledby="v-title">
+    <h1 id="v-title"></h1>
+    <div><span class="cell-k up">Client</span><span id="v-client"></span></div>
+    <div><span class="cell-k up">Year</span><span id="v-year"></span></div>
+    <div id="v-desc"></div>
+  </section>
+  <div class="v-img" id="v-img"></div>
+</main><script src="content.js"></script></body></html>
